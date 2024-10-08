@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peddy</title>
+    <script src="https://kit.fontawesome.com/8a6d4e3961.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="js/style.css" />
+</head>
+
+
+<body>
+    <header>
+        <!-- Nav Bar -->
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+              <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4 6h16M4 12h8m-8 6h16" />
+                  </svg>
+                </div>
+                <ul
+                  tabindex="0"
+                  class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                  <li><a>Home</a></li>
+                  <li>
+                    <a>Shop</a>
+                  </li>
+                  <li><a>Item 3</a></li>
+                </ul>
+              </div>
+              <a class="btn btn-ghost text-xl"><span><img src="images/logo.webp" alt=""></span>Peddy</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+              <ul class="menu menu-horizontal px-1">
+                <li><a>Home</a></li>
+                <li>
+                    <a>Shop</a>
+                </li>
+                <li><a>Contact</a></li>
+              </ul>
+            </div>
+            <div class="navbar-end">
+              <a class="btn rounded-full"><i class="fa-regular fa-user"></i></a>
+            </div>
+          </div>
+        
+    </header>
+    <main>
+        <!-- Path Adoption -->
+        <section>
+            <div>
+                <div class="space-y-4 text-center max-w-2xl mx-auto pt-8">
+                    <h3 class="">Bringing Families Together ❤️ 
+                    </h3>
+                    <h1 class="text-5xl font-extrabold">
+                        Your Path to Adoption Starts Here
+                    </h1>
+                    <p>It is a long established fact that a reader will be distracted by the readable content of a 
+                        page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+
+                        <button class="btn text-white bg-green-700">View More</button>
+                        <img src="images/pet.webp" alt="">
+                </div>
+                        
+        </section>
+
+        <Section class="w-11/12 mx-auto">
+            <div class="max-w-2xl mx-auto text-center space-y-8">
+                <h1 class="font-extrabold text-4xl">
+                    Adopt  Your  Best Friend
+
+                </h1>
+                <p>
+                    It is a long established fact that a reader will be distracted by the readable 
+                    content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.
+                </p>
+                
+            </div>
+            <nav id="pet-categories" class="grid grid-cols-1 col-span-1 md:grid-cols-3 lg:grid-cols-4 items-center space-y-2 lg:space-x-4  pt-6">
+
+                  
+
+            </nav>
+        </Section>
+
+
+        <section class="w-11/12 mx-auto flex gap-6 pt-6" >
+          <div id="petsPro" class="w-8/12 lg:w-9/12 grid grid-cols-1 lg:grid-cols-3 gap-y-4 gap-x-4 ">
+
+          </div>
+          <div id="likePro" class="w-4/12 lg:w-3/12 border p-2">
+            <div id="likePet" class="flex flex-wrap gap-3">
+              
+            </div>
+            
+          </div>
+
+
+        </section>
+
+
+    </main>
+    <!-- Open the modal using ID.showModal() method -->
+<button id="showData" class="btn hidden" onclick="detailModal.showModal()">open modal</button>
+<dialog id="detailModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="modalDetails">
+
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+ <!-- Open the modal using ID.showModal() method -->
+ <!-- <button id="AdopshowData" class="btn1 hidden" onclick="adopModal.showModal()">open modal</button>
+ <dialog id="adopModal" class="modal modal-bottom sm:modal-middle">
+   <div class="modal-box">
+     <div id="modalDetails">
+ 
+     </div>
+     <div class="modal-action-a">
+       <form method="dialog">
+         if there is a button in form, it will close the modal -->
+         <!-- <button class="btn1">Close</button>
+       </form>
+     </div>
+   </div>
+ </dialog> -->
+
+
+
+
+    <!-- <footer class="footer bg-black text-white  flex  justify-around py-14">
+      
+            <nav>
+                <a class="btn btn-ghost text-xl"><span><img src="images/logo.webp" alt=""></span>Peddy</a>
+                <p>Location: av. Washington 165, NY CA 
+                    <br>54003
+                    <br>Phone: +31 85 964 47 25
+                    <br>Email: info@yourdomain.com
+                    <br>Openings hours: 9.00 AM - 5.00 PM</p>
+                    <div class="space-x-6">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        </div>
+                  
+            </nav>
+            <nav>
+              <h6 class="footer-title">Useful Link</h6>
+              <a class="link link-hover">Home</a>
+              <a class="link link-hover">About Us</a>
+              <a class="link link-hover">Animals</a>
+              <a class="link link-hover">Foundation</a>
+              <a class="link link-hover">Contact</a>
+            </nav>
+            
+            <form>
+              <h6 class="footer-title">Drop Massage</h6>
+              <fieldset class="form-control w-80 space-y-5">
+                <label class="label">
+                </label>
+                <div class="">
+                  <input
+                    type="text"
+                    placeholder="username@site.com"
+                    class="input input-bordered join-item" />
+                  
+                </div>
+                <button class="btn btn-primary w-52 ">Subscribe</button>
+              </fieldset>
+            </form>
+        
+      </footer> -->
+   
+
+    <script src="scripts/category.js"></script>
+</body>
+
+</html>
