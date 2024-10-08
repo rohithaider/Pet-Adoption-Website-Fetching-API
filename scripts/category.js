@@ -58,7 +58,7 @@ const displayCategories = (data) => {
     const buttonContainer = document.createElement("div");
     buttonContainer.classList = "";
     buttonContainer.innerHTML = `
-    <button id="btn-${item.category}" onclick="loadPetCategories('${item.category}')" class="btn w-full md:w-48 lg:w-72 h-30 p-4 bg-white">
+    <button id="btn-${item.category}" onclick="loadPetCategories('${item.category}')" class="btn category-btn w-full md:w-48 lg:w-72 h-30 p-4 bg-white">
     <img class="object-cover h-4/5" src="${item.category_icon}" alt="${item.category}"  />
    ${item.category}
     </button>

@@ -1,6 +1,6 @@
 .active{
-    background-color: forestgreen;
-    color: white;
+    background-color:red;
+    color: black;
 }
 html {
     scroll-behavior: smooth;
