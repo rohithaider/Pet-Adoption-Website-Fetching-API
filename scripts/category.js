@@ -175,13 +175,18 @@ its layout. The point of using Lorem Ipsum is that it has a.</p></div>
   });
 };
 
-document.getElementById('sort-pets').addEventListener('click',()=>{
+document.getElementById('sort-pets').addEventListener('click',(e)=>{
+    sortPets();
+
+})
+
+function sortPets(){
     fetch("https://openapi.programming-hero.com/api/peddy/pets ")
     .then((res) => res.json())
     .then((data) => displayPets(data.pets.sort((a,b)=>b.price-a.price)))
     .catch((error) => console.log(error));
 
-})
+}
 
 
 loadCategories();
