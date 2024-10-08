@@ -16,6 +16,8 @@ const removeActiveClass = () => {
 const loadPetCategories = (category) => {
     const spinner = document.getElementById("loading-spinner");
     const petSection = document.getElementById("petsPro");
+    
+    
   
     // Show the spinner and hide the pet section
     spinner.classList.remove("hidden");
@@ -187,6 +189,10 @@ function sortPets(){
     .catch((error) => console.log(error));
 
 }
+
+document.getElementById('view-more').addEventListener('click',()=>{
+    window.location.href="#adopt-best-friend"
+})
 
 
 loadCategories();

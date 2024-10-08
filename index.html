@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/8a6d4e3961.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="js/style.css" />
+<link rel="stylesheet" href="style/style.css" />
 </head>
 
 
@@ -71,13 +71,14 @@
                     <p>It is a long established fact that a reader will be distracted by the readable content of a 
                         page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
 
-                        <button class="btn text-white bg-green-700">View More</button>
+                        <button id="view-more" class="btn text-white bg-green-700"><a href="#adopt-best-friend">View More</a>
+                        </button>
                         <img src="images/pet.webp" alt="">
                 </div>
                         
         </section>
 
-        <Section class="w-11/12 mx-auto">
+        <Section id="adopt-best-friend" class="w-11/12 mx-auto">
             <div class="max-w-2xl mx-auto text-center space-y-8">
                 <h1 class="font-extrabold text-4xl">
                     Adopt  Your  Best Friend
@@ -95,18 +96,20 @@
 
             </nav>
         </Section>
-        <section id="default-deals-section">
-          <div id="default-deals" class="w-11/12 mx-auto flex justify-between items-center pt-4"> 
+        <section id="old-section" >
+          <div class="w-11/12 mx-auto flex justify-between items-center pt-4"> 
             <div><h1 class="font-extrabold">Best Deals For You</h1></div>
             <button id="sort-pets" class="btn btn-success">Sort by Price</button>
           </div>
         </section>
-        <section id="new-default-section"></section>
+        <section id="new-section"></section>
+        
 
 
         <section class="w-11/12 mx-auto flex gap-6 pt-6" >
+          
           <div id="petsPro" class="w-8/12 lg:w-9/12 grid grid-cols-1 lg:grid-cols-3 gap-y-4 gap-x-4 ">
-            //spinner
+            
             <div id="loading-spinner" class="hidden w-full h-96 flex items-center justify-center">
               <div class="spinner-border animate-spin inline-block w-12 h-12 border-4 border-green-600 rounded-full"></div>
             </div>
