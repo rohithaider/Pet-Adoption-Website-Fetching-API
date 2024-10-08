@@ -8,7 +8,7 @@ const loadCategories = () => {
 const removeActiveClass = () => {
   const buttons = document.getElementsByClassName("category-btn");
   for (let btn of buttons) {
-    btn.classList.remove("active");
+    btn.classList.remove("btn-info");
   }
 };
 
@@ -30,7 +30,9 @@ const loadPetCategories = (category) => {
         .then((data) => {
           removeActiveClass();
           const activeBtn = document.getElementById(`btn-${category}`);
-          activeBtn.classList.add("active");
+          activeBtn.classList.add("btn-info");
+          
+
   
           // Hide the spinner and show the pet section after data is fetched
           spinner.classList.add("hidden");
