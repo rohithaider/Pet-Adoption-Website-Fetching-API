@@ -12,21 +12,55 @@ const removeActiveClass = () => {
   }
 };
 
+// const loadPetCategories = (category) => {
+//   //  alert(id);
+
+//   fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       removeActiveClass();
+
+//       const activeBtn = document.getElementById(`btn-${category}`);
+//       // console.log(activeBtn)
+//       activeBtn.classList.add("active");
+//       displayPets(data.data);
+//     })
+//     .catch((error) => console.log(error));
+// };
+
 const loadPetCategories = (category) => {
-  //  alert(id);
+    const spinner = document.getElementById("loading-spinner");
+    const petSection = document.getElementById("petsPro");
+  
+    // Show the spinner and hide the pet section
+    spinner.classList.remove("hidden");
+    petSection.classList.add("hidden");
+  
+    // Delay the fetch call by 2 seconds (2000ms)
+    setTimeout(() => {
+      fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
+        .then((res) => res.json())
+        .then((data) => {
+          removeActiveClass();
+          const activeBtn = document.getElementById(`btn-${category}`);
+          activeBtn.classList.add("active");
+  
+          // Hide the spinner and show the pet section after data is fetched
+          spinner.classList.add("hidden");
+          petSection.classList.remove("hidden");
+  
+          displayPets(data.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          spinner.classList.add("hidden"); // Hide the spinner on error
+          petSection.classList.remove("hidden"); // Show the section even on error
+        });
+    }, 2000); // 2 second delay
+  };
+  
 
-  fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
-    .then((res) => res.json())
-    .then((data) => {
-      removeActiveClass();
-
-      const activeBtn = document.getElementById(`btn-${category}`);
-      // console.log(activeBtn)
-      activeBtn.classList.add("active");
-      displayPets(data.data);
-    })
-    .catch((error) => console.log(error));
-};
+  
 
 const displayCategories = (data) => {
   const categoryContainer = document.getElementById("pet-categories");
