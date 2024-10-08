@@ -97,30 +97,26 @@ const loadPetDetails = async (petId) => {
 };
 
 const displayPetDetails = (petData) => {
-  const petDetailsC = document.getElementById("modalDetails");
-  petDetailsC.innerHTML = `<img
-      src=${petData.image}
-      alt="Shoes"
-      class="rounded-xl" />
-      <h2 class="card-title"> ${petData.pet_name}</h2>
-  <p><i class="fa-solid fa-table-list"></i> Breed:${
-    petData.breed === undefined ? "Not Available" : petData.breed
-  }</p>
-  <p><i class="fa-solid fa-calendar-days"></i> Birth:${
-    petData.date_of_birth
-  }</p>
-  <p><i class="fa-solid fa-mercury"></i> Gender:${petData.gender}</p>
-  <p><i class="fa-solid fa-tags"></i> Price:${petData.price}</p>
-   <p><i class="fa-solid fa-syringe"></i> Vaccinated status:${
-     petData.vaccinated_status
-   }</p>
-    <div class="divider"></div>
-   <p>Details Information</p>
-   <p>${petData.pet_details}</p>
-`;
-  document.getElementById("showData").click();
-};
-
+    const petDetailsInfo = document.getElementById("modalDetails");
+    petDetailsInfo.innerHTML = `
+      <img
+        src="${petData.image || 'https://via.placeholder.com/150'}"
+        alt="${petData.pet_name || 'Pet Image'}"
+        class="rounded-xl" />
+      <h2 class="card-title">${petData.pet_name || "Unnamed Pet"}</h2>
+      <p><i class="fa-solid fa-table-list"></i> Breed: ${petData.breed || "Not Available"}</p>
+      <p><i class="fa-solid fa-calendar-days"></i> Birth: ${petData.date_of_birth ? petData.date_of_birth : "Date not provided"}</p>
+      <p><i class="fa-solid fa-mercury"></i> Gender: ${petData.gender ? petData.gender : "Not specified"}</p>
+      <p><i class="fa-solid fa-tags"></i> Price: ${petData.price !== null && petData.price !== undefined ? `$${petData.price}` : "Price not available"}</p>
+      <p><i class="fa-solid fa-syringe"></i> Vaccinated status: ${petData.vaccinated_status ? petData.vaccinated_status : "Not specified"}</p>
+      <div class="divider"></div>
+      <p>Details Information</p>
+      <p>${petData.pet_details || "No additional details available."}</p>
+    `;
+    
+    document.getElementById("showData").click();
+  };
+  
 const loadPetsProfile = () => {
   fetch("https://openapi.programming-hero.com/api/peddy/pets ")
     .then((res) => res.json())
@@ -128,56 +124,50 @@ const loadPetsProfile = () => {
     .catch((error) => console.log(error));
 };
 
+
+
 const displayPets = (pets) => {
-  const petSection = document.getElementById("petsPro");
-  petSection.innerHTML = "";
-
-  if (pets.length == 0) {
-    petSection.classList.remove("grid");
-    petSection.innerHTML = `<div class ="w-full text-center  shadow-xl"> 
-        <div class="h-full lg:h-96"><img class= "w-40 mx-auto pt-6" src="images/error.webp" alt="" />
-        <h2 class=" text-3xl font-bold "> "No Information Available"</h2>
-        <p class= "w-10/12 mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
-its layout. The point of using Lorem Ipsum is that it has a.</p></div>
-          </div>
-        `;
-    return;
-  } else {
-    petSection.classList.add("grid");
-  }
-
-  pets.forEach((pets) => {
-    const card = document.createElement("div");
-    card.classList = "card bg-base-100 w-78 shadow-xl border";
-    card.innerHTML = `<figure class="px-4 pt-4">
-    <img
-      src=${pets.image}
-      alt="Shoes"
-      class="rounded-xl" />
-  </figure>
-  <div class="p-4">
-  <h2 class="card-title"> ${pets.pet_name}</h2>
-  <p><i class="fa-solid fa-table-list"></i> Breed:${
-    pets.breed === undefined ? "Not Available" : pets.breed
-  }</p>
-  <p><i class="fa-solid fa-calendar-days"></i> Birth:${pets.date_of_birth}</p>
-  <p><i class="fa-solid fa-mercury"></i> Gender:${pets.gender}</p>
-  <p><i class="fa-solid fa-tags"></i> Price:${(pets.price !== null ? pets.price:"No Price Given")}</p>
-    <div class="divider"></div>
-    <div class="card-actions flex justify-around">
-    <button onclick="loadLikeDetails(${
-      pets.petId
-    })" class="btn btn-outline"><i class="fa-regular fa-thumbs-up"></i></button>
-    <button class="btn btn-outline text-lime-600 font-bold">Adopt</button>
-    <button onclick="loadPetDetails(${
-      pets.petId
-    })"  class="btn btn-outline text-lime-600 font-bold">Details</button>
-    </div>
-  </div>
-        `;
-    petSection.append(card);
-  });
-};
+    const petSection = document.getElementById("petsPro");
+    petSection.innerHTML = "";
+  
+    if (pets.length === 0) {
+      petSection.classList.remove("grid");
+      petSection.innerHTML = `<div class="w-full text-center shadow-xl"> 
+          <div class="h-full lg:h-96"><img class="w-40 mx-auto pt-6" src="images/error.webp" alt="No pets available" />
+          <h2 class="text-3xl font-bold">"No Information Available"</h2>
+          <p class="w-10/12 mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
+  its layout. The point of using Lorem Ipsum is that it has a.</p></div>
+            </div>
+          `;
+      return;
+    } else {
+      petSection.classList.add("grid");
+    }
+  
+    pets.forEach((pet) => {
+      const card = document.createElement("div");
+      card.classList = "card bg-base-100 w-78 shadow-xl border";
+      card.innerHTML = `<figure class="px-4 pt-4">
+        <img src="${pet.image || 'https://via.placeholder.com/150'}" alt="${pet.pet_name || 'Pet Image'}" class="rounded-xl" />
+      </figure>
+      <div class="p-4">
+        <h2 class="card-title">${pet.pet_name || "Unnamed Pet"}</h2>
+        <p><i class="fa-solid fa-table-list"></i> Breed: ${pet.breed || "Not Available"}</p>
+        <p><i class="fa-solid fa-calendar-days"></i> Birth: ${pet.date_of_birth ? pet.date_of_birth : "Date not provided"}</p>
+        <p><i class="fa-solid fa-mercury"></i> Gender: ${pet.gender ? pet.gender : "Not specified"}</p>
+        <p><i class="fa-solid fa-tags"></i> Price: ${pet.price !== null && pet.price !== undefined ? `$${pet.price}` : "Price not available"}</p>
+        <div class="divider"></div>
+        <div class="card-actions flex justify-around">
+          <button onclick="loadLikeDetails(${pet.petId})" class="btn btn-outline"><i class="fa-regular fa-thumbs-up"></i></button>
+          <button class="btn btn-outline text-lime-600 font-bold">Adopt</button>
+          <button onclick="loadPetDetails(${pet.petId})" class="btn btn-outline text-lime-600 font-bold">Details</button>
+        </div>
+      </div>
+      `;
+      petSection.append(card);
+    });
+  };
+  
 
 document.getElementById('sort-pets').addEventListener('click',(e)=>{
     sortPets();
