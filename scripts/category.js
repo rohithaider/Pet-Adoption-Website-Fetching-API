@@ -158,9 +158,9 @@ const displayPets = (pets) => {
         <p><i class="fa-solid fa-tags"></i> Price: ${pet.price !== null && pet.price !== undefined ? `$${pet.price}` : "Price not available"}</p>
         <div class="divider"></div>
         <div class="card-actions flex justify-around">
-          <button onclick="loadLikeDetails(${pet.petId})" class="btn btn-outline"><i class="fa-regular fa-thumbs-up"></i></button>
-          <button class="btn btn-outline text-lime-600 font-bold">Adopt</button>
-          <button onclick="loadPetDetails(${pet.petId})" class="btn btn-outline text-lime-600 font-bold">Details</button>
+          <button onclick="loadLikeDetails(${pet.petId})" class="btn border border-[#0E7A81] bg-white"><i class="fa-regular fa-thumbs-up text-gray-500 b"></i></button>
+          <button class="btn btn-outline text-[#0E7A81] font-bold">Adopt</button>
+          <button onclick="loadPetDetails(${pet.petId})" class="btn btn-outline text-[#0E7A81]  font-bold">Details</button>
         </div>
       </div>
       `;
