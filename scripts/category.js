@@ -12,21 +12,6 @@ const removeActiveClass = () => {
   }
 };
 
-// const loadPetCategories = (category) => {
-//   //  alert(id);
-
-//   fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       removeActiveClass();
-
-//       const activeBtn = document.getElementById(`btn-${category}`);
-//       // console.log(activeBtn)
-//       activeBtn.classList.add("active");
-//       displayPets(data.data);
-//     })
-//     .catch((error) => console.log(error));
-// };
 
 const loadPetCategories = (category) => {
     const spinner = document.getElementById("loading-spinner");
@@ -36,7 +21,7 @@ const loadPetCategories = (category) => {
     spinner.classList.remove("hidden");
     petSection.classList.add("hidden");
   
-    // Delay the fetch call by 2 seconds (2000ms)
+    // Delaying the fetch call by 2 seconds
     setTimeout(() => {
       fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
         .then((res) => res.json())
@@ -53,8 +38,10 @@ const loadPetCategories = (category) => {
         })
         .catch((error) => {
           console.log(error);
-          spinner.classList.add("hidden"); // Hide the spinner on error
-          petSection.classList.remove("hidden"); // Show the section even on error
+          // Hide the spinner on error
+          spinner.classList.add("hidden"); 
+          // Show the section even on error
+          petSection.classList.remove("hidden"); 
         });
     }, 2000); // 2 second delay
   };
@@ -143,11 +130,11 @@ const displayPets = (pets) => {
 
   if (pets.length == 0) {
     petSection.classList.remove("grid");
-    petSection.innerHTML = `<div class ="w-full h-96 text-center  shadow-xl"> 
-        <img class= "w-40 mx-auto pt-6" src="images/error.webp" alt="" />
+    petSection.innerHTML = `<div class ="w-full text-center  shadow-xl"> 
+        <div class="h-full lg:h-96"><img class= "w-40 mx-auto pt-6" src="images/error.webp" alt="" />
         <h2 class=" text-3xl font-bold "> "No Information Available"</h2>
         <p class= "w-10/12 mx-auto">It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
-its layout. The point of using Lorem Ipsum is that it has a.</p>
+its layout. The point of using Lorem Ipsum is that it has a.</p></div>
           </div>
         `;
     return;
