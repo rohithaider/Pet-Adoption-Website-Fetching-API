@@ -162,7 +162,7 @@ its layout. The point of using Lorem Ipsum is that it has a.</p></div>
   }</p>
   <p><i class="fa-solid fa-calendar-days"></i> Birth:${pets.date_of_birth}</p>
   <p><i class="fa-solid fa-mercury"></i> Gender:${pets.gender}</p>
-  <p><i class="fa-solid fa-tags"></i> Price:${pets.price}</p>
+  <p><i class="fa-solid fa-tags"></i> Price:${(pets.price !== null ? pets.price:"No Price Given")}</p>
     <div class="divider"></div>
     <div class="card-actions flex justify-around">
     <button onclick="loadLikeDetails(${
