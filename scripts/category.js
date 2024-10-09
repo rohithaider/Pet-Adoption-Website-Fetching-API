@@ -38,12 +38,11 @@ const loadPetCategories = (category) => {
         let sortButton = document.querySelector(".sort-pets");
         sortButton.id = category;
         sortButton.removeEventListener("click", sortPets);
+        document
+          .getElementById(`${category}`)
+          .addEventListener("click", () => sortPetsByCategory(category));
 
         displayPets(data.data);
-
-        document
-        .getElementById(`${category}`)
-        .addEventListener("click", () => sortPetsByCategory(category));
       })
       .catch((error) => {
         console.log(error);
@@ -54,8 +53,6 @@ const loadPetCategories = (category) => {
       });
   }, 2000); // 2 second delay
   //sort by category
-
- 
 };
 
 const displayCategories = (data) => {
@@ -144,7 +141,7 @@ const loadPetsProfile = () => {
 
 const displayPets = (pets) => {
   const petSection = document.getElementById("petsPro");
-  petSection.innerHTML = "";
+  petSection.innerHTML = ``;
 
   if (pets.length === 0) {
     petSection.classList.remove("grid");
@@ -203,19 +200,45 @@ const displayPets = (pets) => {
 document.querySelector(".sort-pets").addEventListener("click", sortPets);
 
 function sortPets() {
-  fetch("https://openapi.programming-hero.com/api/peddy/pets ")
+  const spinner = document.getElementById("loading-spinner");
+  const petSection = document.getElementById("petsPro");
+
+  // Show the spinner and hide the pet section
+  spinner.classList.remove("hidden");
+  petSection.classList.add("hidden");
+  setTimeout(()=>{
+    fetch("https://openapi.programming-hero.com/api/peddy/pets ")
     .then((res) => res.json())
     .then((data) => displayPets(data.pets.sort((a, b) => b.price - a.price)))
     .catch((error) => console.log(error));
+    //hide the spinner
+    spinner.classList.add("hidden");
+    petSection.classList.remove("hidden");
+
+  },2000)
+
+
+  
 }
 async function sortPetsByCategory(pet) {
+  const spinner = document.getElementById("loading-spinner");
+  const petSection = document.getElementById("petsPro");
+
+  // Show the spinner and hide the pet section
+  spinner.classList.remove("hidden");
+  petSection.classList.add("hidden");
+
   const res = await fetch(
     `https://openapi.programming-hero.com/api/peddy/category/${pet}`
   );
   const data = await res.json();
   const displayData = await data.data;
-  displayPets(displayData.sort((a, b) => b.price - a.price));
-  
+  setTimeout(() => {
+    displayPets(displayData.sort((a, b) => b.price - a.price));
+    // Hide the spinner and show the pet section after data is fetched
+    spinner.classList.add("hidden");
+    petSection.classList.remove("hidden");
+  }, 1000);
 }
 
 document.getElementById("view-more").addEventListener("click", () => {
