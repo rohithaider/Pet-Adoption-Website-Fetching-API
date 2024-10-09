@@ -186,7 +186,7 @@ const displayPets = (pets) => {
           <button onclick="loadLikeDetails(${
             pet.petId
           })" class="btn border border-[#0E7A81] bg-white"><i class="fa-regular fa-thumbs-up text-gray-500 b"></i></button>
-          <button class="btn btn-outline text-[#0E7A81] font-bold">Adopt</button>
+          <button onclick="clickAdopt(this)" class="adopt-btn btn btn-outline text-[#0E7A81] font-bold">Adopt</button>
           <button onclick="loadPetDetails(${
             pet.petId
           })" class="btn btn-outline text-[#0E7A81]  font-bold">Details</button>
@@ -241,9 +241,45 @@ async function sortPetsByCategory(pet) {
   }, 1000);
 }
 
+
+
+//navigating view more to adopt section
 document.getElementById("view-more").addEventListener("click", () => {
   window.location.href = "#adopt-best-friend";
 });
 
+
+//sent (this) keyword to target the particular button since all class is same
+const clickAdopt = (button) => {
+
+  console.log(button);
+  const modal = document.getElementById('my_modal_5');
+  modal.showModal();
+
+  let counter = 3; 
+  const countdownElement = modal.querySelector('.countdown span');
+  countdownElement.style.setProperty('--value', counter);
+  const interval = setInterval(() => {
+    counter--;
+    countdownElement.style.setProperty('--value', counter);
+
+    // Close the modal and clear the interval after 3 seconds
+    if (counter <= 0) {
+      clearInterval(interval);
+      modal.close();
+      button.textContent = 'Adopted'; 
+      button.classList.add('bg-blue-200')
+    }
+  }, 1000); 
+  
+  
+};
+
+
+
+
 loadCategories();
 loadPetsProfile();
+
+
+
