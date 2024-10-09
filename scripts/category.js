@@ -14,6 +14,17 @@ const removeActiveClass = () => {
 };
 
 const loadPetCategories = (category) => {
+  const sortButton = document.querySelector(".sort-pets");
+        sortButton.removeAttribute("id");
+        sortButton.setAttribute("id",category)
+        
+        sortButton.removeEventListener("click", sortPets);
+        document
+          .getElementById(`${category}`)
+          .addEventListener("click", () => sortPetsByCategory(category));
+
+
+
   const spinner = document.getElementById("loading-spinner");
   const petSection = document.getElementById("petsPro");
 
@@ -37,12 +48,7 @@ const loadPetCategories = (category) => {
         spinner.classList.add("hidden");
         petSection.classList.remove("hidden");
 
-        let sortButton = document.querySelector(".sort-pets");
-        sortButton.id = category;
-        sortButton.removeEventListener("click", sortPets);
-        document
-          .getElementById(`${category}`)
-          .addEventListener("click", () => sortPetsByCategory(category));
+        
 
         displayPets(data.data);
       })
@@ -104,10 +110,14 @@ const loadPetDetails = async (petId) => {
 const displayPetDetails = (petData) => {
   const petDetailsInfo = document.getElementById("modalDetails");
   petDetailsInfo.innerHTML = `
+      <div class="flex gap-4 ">
+      <div class="w-45 h-40">
       <img
         src="${petData.image || "https://via.placeholder.com/150"}"
         alt="${petData.pet_name || "Pet Image"}"
-        class="rounded-xl" />
+        class="rounded-xl object-cover w-full h-full" />
+      </div>
+      <div>
       <h2 class="card-title">${petData.pet_name || "Unnamed Pet"}</h2>
       <p><i class="fa-solid fa-table-list"></i> Breed: ${
         petData.breed || "Not Available"
@@ -126,8 +136,10 @@ const displayPetDetails = (petData) => {
       <p><i class="fa-solid fa-syringe"></i> Vaccinated status: ${
         petData.vaccinated_status ? petData.vaccinated_status : "Not specified"
       }</p>
+      </div>
+      </div>
       <div class="divider"></div>
-      <p>Details Information</p>
+      <p><b>Details Information:</b></p>
       <p>${petData.pet_details || "No additional details available."}</p>
     `;
 
@@ -184,7 +196,7 @@ const displayPets = (pets) => {
             : "Price not available"
         }</p>
         <div class="divider"></div>
-        <div class="card-actions flex justify-around">
+        <div class="card-actions grid grid-cols-3 gap-5">
           <button onclick="loadLikeDetails(${
             pet.petId
           })" class="btn border border-[#0E7A81] bg-white"><i class="fa-regular fa-thumbs-up text-gray-500 b"></i></button>
