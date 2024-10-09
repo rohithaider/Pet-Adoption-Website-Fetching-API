@@ -249,10 +249,9 @@ document.getElementById("view-more").addEventListener("click", () => {
 });
 
 
-//sent (this) keyword to target the particular button since all class is same
+//sent (this) keyword from the creation of the button as a
+//target to the particular click adopt function since all class is same
 const clickAdopt = (button) => {
-
-  console.log(button);
   const modal = document.getElementById('my_modal_5');
   modal.showModal();
 
