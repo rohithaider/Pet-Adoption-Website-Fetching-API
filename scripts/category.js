@@ -9,6 +9,7 @@ const removeActiveClass = () => {
   const buttons = document.getElementsByClassName("category-btn");
   for (let btn of buttons) {
     btn.classList.remove("btn-info");
+    btn.classList.remove("bg-[#FFCCAD]")
   }
 };
 
@@ -30,6 +31,7 @@ const loadPetCategories = (category) => {
         removeActiveClass();
         const activeBtn = document.getElementById(`btn-${category}`);
         activeBtn.classList.add("btn-info");
+        activeBtn.classList.add("bg-[#FFCCAD]")
 
         // Hide the spinner and show the pet section after data is fetched
         spinner.classList.add("hidden");
@@ -63,7 +65,7 @@ const displayCategories = (data) => {
 
     buttonContainer.classList = "";
     buttonContainer.innerHTML = `
-    <button id="btn-${item.category}" onclick="loadPetCategories('${item.category}')" class="btn category-btn w-full md:w-48 lg:w-72 h-30 p-4 bg-white">
+    <button id="btn-${item.category}" onclick="loadPetCategories('${item.category}')" class="btn category-btn w-40 lg:w-60 h-30  bg-white">
     <img class="object-cover h-4/5" src="${item.category_icon}" alt="${item.category}"  />
    ${item.category}
     </button>
@@ -268,6 +270,7 @@ const clickAdopt = (button) => {
       modal.close();
       button.textContent = 'Adopted'; 
       button.classList.add('bg-blue-200')
+      button.disabled = true;
     }
   }, 1000); 
   
