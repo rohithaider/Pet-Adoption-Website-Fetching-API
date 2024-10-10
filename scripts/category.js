@@ -196,7 +196,7 @@ const displayPets = (pets) => {
             : "Price not available"
         }</p>
         <div class="divider"></div>
-        <div class="card-actions grid grid-cols-3 gap-2 lg:gap-5">
+        <div class="card-actions grid grid-cols-3 gap-1 lg:gap-5">
           <button onclick="loadLikeDetails(${
             pet.petId
           })" class="btn border border-[#0E7A81] bg-white"><i class="fa-regular fa-thumbs-up text-gray-500 b"></i></button>
