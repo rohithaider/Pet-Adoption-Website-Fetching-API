@@ -89,10 +89,10 @@ const loadLikeDetails = async (petId) => {
 const displayLikePet = (petData) => {
   const petLiked = document.getElementById("likePet");
   const newLiked = document.createElement("div");
-  newLiked.classList = "border rounded";
+  newLiked.classList = "border rounded-xl";
   newLiked.innerHTML = `
     <img
-    class="lg:w-20 lg:h-20 object-cover w-30 p-1"
+    class="lg:w-20 lg:h-20 object-cover w-30 rounded-xl"
       src=${petData.image}
       alt="Shoes"
       class="rounded-xl" />
