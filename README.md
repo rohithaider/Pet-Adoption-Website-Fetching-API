@@ -22,5 +22,5 @@ Peddy is a user-friendly pet adoption platform that allows users to explore vari
 
 ## Live Demo
 
-Check out the live version of the Peddy project [https://project-6-api.vercel.app](#)
+Check out the live version of the Peddy project [https://peddy-api.vercel.app](#)
 
